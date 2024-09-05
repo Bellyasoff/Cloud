@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{layout}">
+<head>
+  <title>Details List</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="d-flex" id="wrapper">
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+      <!-- Page content-->
+      <div class="container px-5 my-5">
+        <div th:if="${param.success}" class="alert alert-success">
+          You are registered successfully!
+        </div>
+        <div class="text-center mb-5">
+        <div class="Details">
+          <h1>Details list</h1>
+          <div class="row gx-5">
+            <div>
+              <form th:action="@{/details/search}" class="form-inline my-2 my-lg-0 mb-3">
+                <input name="query" class="form-control mr-sm-2 mb-5"
+                       type="search" placeholder="Search details" aria-label="Search">
+              </form>
+            </div>
+            <div th:each="d : ${detail}" class="col-lg-6">
+              <div class="col">
+                <a th:text="${d.name}"></a>
+                <a th:text="${d.price}"></a>
+                <a th:text="${d.oemNumber}"></a>
+                <a th:text="${d.manufacturer}"></a>
+              </div>
+              <a class="bnt bnt-primary" th:href="@{/details/{detailId}(detailId=${d.id})}">View</a>
+              <div th:if="${user.id} == ${d.createdBy.id}">
+              <a class="btn btn-primary" th:href="@{/details/{detailId}/edit(detailId=${d.id})}">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Create details</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+      <div class="text-center my-5">
+        <h1 class="fw-bolder" th:text="${detail.name}"></h1>
+        <p th:text="${detail.manufacturer}"></p>
+        <p class="lead mb-0"></p>
+      </div>
+    </div>
+  </header>
+  <!-- Page content-->
+  <div class="container">
+    <div class="row">
+      <!-- Blog entries-->
+      <div class="col-lg-8">
+        <!-- Featured blog post-->
+        <div class="card mb-4">
+          <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+          <div class="card-body">
+            <div class="small text-muted">January 1, 2023</div>
+            <h2 class="card-title">Featured Post Title</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+          </div>
+        </div>
+      </div>
+      <!-- Side widgets-->
+      <div class="col-lg-4">
+        <!-- Categories widget-->
+        <div class="card mb-4">
+          <div class="card-header">Categories</div>
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" th:text="${detail.manufacturer}"></li>
+              <li class="list-group-item" th:text="${detail.oemNumber}"></li>
+              <li class="list-group-item" th:text="${detail.name}"></li>
+              <li class="list-group-item" th:text="${detail.price}"></li>
+              <div th:if="${user.id} == ${detail.createdBy.id}">
+              <a class="btn btn-primary" th:href="@{/details/{detailId}/delete(detailId=${detail.id})}">Delete</a>
+              </div>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Edit details</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <form role="form" method="post"
+              th:action="@{/details/{detailId}/edit(detailId=${detail.id})}"
+              th:object="${detail}">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            th:field="*{name}"
+                            placeholder="Name">
+                    <p th:if="${#fields.hasErrors('name')}" class="text-danger"
+                       th:errors="*{name}"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="price">Price</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="price"
+                            name="price"
+                            th:field="*{price}"
+                            placeholder="Price">
+                    <p th:if="${#fields.hasErrors('price')}" class="text-danger"
+                       th:errors="*{price}"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="oem">OEM</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="oem"
+                            name="oemNumber"
+                            th:field="*{oemNumber}"
+                            placeholder="OEM">
+                    <p th:if="${#fields.hasErrors('oemNumber')}" class="text-danger"
+                       th:errors="*{oemNumber}"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="manufacturer">Manufacturer</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="manufacturer"
+                            name="manufacturer"
+                            th:field="*{manufacturer}"
+                            placeholder="Manufacturer">
+                    <p th:if="${#fields.hasErrors('manufacturer')}" class="text-danger"
+                       th:errors="*{manufacturer}"></p>
+                </div>
+                <button type="submit" class="btn btn-primary">Save edit</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
