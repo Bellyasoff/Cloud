@@ -30,10 +30,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+                                .anyRequest().permitAll()
 //                        .requestMatchers("/login", "/register",
 //                                "/details", "/register/**", "/details/**", "/css/**", "/js/**")
-//                .permitAll())
-                        .anyRequest().permitAll())
+//                .permitAll()
+//                        .requestMatchers("/account")
+//                        .authenticated()
+                )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/details")

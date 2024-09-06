@@ -18,4 +18,6 @@ public interface DetailService {
     void delete(Long detailId);
 
     List<DetailDto> searchDetails(String query);
+
+    List<DetailDto> findDetailsByUser();
 }

@@ -33,9 +33,9 @@
                 <a th:text="${d.manufacturer}"></a>
               </div>
               <a class="bnt bnt-primary" th:href="@{/details/{detailId}(detailId=${d.id})}">View</a>
-              <div th:if="${user.id} == ${d.createdBy.id}">
-              <a class="btn btn-primary" th:href="@{/details/{detailId}/edit(detailId=${d.id})}">Edit</a>
-              </div>
+<!--              <div th:if="${user.id} == ${d.createdBy.id}">-->
+<!--              <a class="btn btn-primary" th:href="@{/details/{detailId}/edit(detailId=${d.id})}">Edit</a>-->
+<!--              </div>-->
             </div>
           </div>
         </div>

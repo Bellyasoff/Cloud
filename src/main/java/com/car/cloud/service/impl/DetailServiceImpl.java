@@ -36,6 +36,15 @@ public class DetailServiceImpl implements DetailService {
     }
 
     @Override
+    public List<DetailDto> findDetailsByUser() {
+        List<Detail> details = detailRepository.findAll();
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+        return details.stream().filter(detail -> detail.getCreatedBy().getId() == user.getId()).map(
+                detail -> mapToDetailDTO(detail)).collect(Collectors.toList());
+    }
+
+    @Override
     public Detail saveDetail(DetailDto detailDto) {
         String username = SecurityUtil.getSessionUser();
         UserEntity user = userRepository.findByUsername(username);
